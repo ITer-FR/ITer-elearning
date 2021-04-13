@@ -38,5 +38,26 @@
   "devDependencies": {
     "eslint": "^7.24.0",
     "prettier": "^2.2.1"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ],
+    "onSuccessTemplate": {
+      "text": "A new release of ITer-elearning frontend is being deployed.\n\n$release_notes"
+    }
   }
 }
