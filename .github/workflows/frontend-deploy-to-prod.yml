@@ -38,4 +38,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npx semantic-release -d
+        run: cd frontend && npx semantic-release -d
