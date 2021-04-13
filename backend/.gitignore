@@ -8,7 +8,10 @@ firebase-debug.log*
 firebase-debug.*.log*
 
 # Firebase cache
-.firebase/
+.cache/firebase/
+
+# Firebase functions build
+functions/lib/
 
 # Firebase config
 

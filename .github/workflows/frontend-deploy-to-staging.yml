@@ -42,8 +42,8 @@ jobs:
       - name: Install packages
         run: cd frontend && yarn install --frozen-lockfile --prefer-offline
 
-      - name: Test & build
-        run: cd frontend && yarn run build && yarn run test
+      - name: Build
+        run: cd frontend && yarn build
 
       - name: Deploy
         run: |
