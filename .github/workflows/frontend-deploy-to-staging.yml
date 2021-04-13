@@ -49,4 +49,4 @@ jobs:
         run: |
           cd frontend
           yarn add firebase-tools
-          yarn firebase deploy --only hosting:staging --token=${{ secrets.FIREBASE_TOKEN }}
+          yarn firebase deploy --project staging --only hosting --token=${{ secrets.FIREBASE_TOKEN }}
