@@ -42,5 +42,6 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ITER_ELEARNING_STAGING }}"
           projectId: iter-elearning-staging
+          entryPoint: frontend
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
