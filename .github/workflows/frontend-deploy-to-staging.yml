@@ -49,4 +49,4 @@ jobs:
         run: |
           cd frontend
           yarn add firebase-tools
-          firebase deploy --only hosting:staging
+          yarn firebase deploy --only hosting:staging
