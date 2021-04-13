@@ -4,7 +4,43 @@
 name: Deploy to Firebase Hosting on PR
 "on": pull_request
 jobs:
-  build_and_preview:
+  frontend-end-to-end-tests:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node14.15.0-chrome86-ff82
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: cd frontend && yarn install --frozen-lockfile --prefer-offline
+
+      - name: Unit tests
+        run: cd frontend && yarn test
+
+      # - name: Install dependencies
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     runTests: false
+
+      - uses: cypress-io/github-action@v2
+        with:
+          start: yarn start
+          install: false
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          browser: chrome
+          headless: true
+          working-directory: frontend
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: frontend/cypress/screenshots
+
+  deploy-preview:
+    needs: [frontend-end-to-end-tests]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -34,8 +70,8 @@ jobs:
       - name: Install packages
         run: cd frontend && yarn install --frozen-lockfile --prefer-offline
 
-      - name: Test & build
-        run: cd frontend && yarn run build && yarn run test
+      - name: Build
+        run: cd frontend && yarn build
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
