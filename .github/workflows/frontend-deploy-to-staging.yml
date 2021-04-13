@@ -1,8 +1,14 @@
-name: Deploy to prod
-on: workflow_dispatch
+name: Deploy to staging
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "frontend/**"
+
 jobs:
-  deploy-to-prod:
-    name: Deploy to prod
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -35,7 +41,11 @@ jobs:
       - name: Install packages
         run: cd frontend && yarn install --frozen-lockfile --prefer-offline
 
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: cd frontend && npx semantic-release -d
+      - name: Test & build
+        run: cd frontend && yarn run build && yarn run test
+
+      - name: Deploy
+        run: |
+          npm i -g firebase-tools
+          cd frontend &&
+          firebase deploy --only hosting:staging
