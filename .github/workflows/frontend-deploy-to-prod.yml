@@ -35,7 +35,13 @@ jobs:
       - name: Install packages
         run: cd frontend && yarn install --frozen-lockfile --prefer-offline
 
-      - name: Release
+      - name: Release & Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: cd frontend && npx semantic-release -d
+
+      - name: Deploy
+        run: |
+          cd frontend
+          yarn add firebase-tools
+          yarn firebase deploy --project production --only hosting --token=${{ secrets.FIREBASE_TOKEN }}
