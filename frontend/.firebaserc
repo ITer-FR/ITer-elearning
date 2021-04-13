@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "iter-elearning-staging"
+    "staging": "iter-elearning-staging"
   }
 }
