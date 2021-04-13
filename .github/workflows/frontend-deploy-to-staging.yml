@@ -46,6 +46,6 @@ jobs:
 
       - name: Deploy
         run: |
-          npm i -g firebase-tools
-          cd frontend &&
+          cd frontend
+          yarn install firebase-tools
           firebase deploy --only hosting:staging
