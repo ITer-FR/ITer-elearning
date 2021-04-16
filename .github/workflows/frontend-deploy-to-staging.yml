@@ -50,3 +50,5 @@ jobs:
           cd frontend
           yarn add firebase-tools
           yarn firebase deploy --project staging --only hosting --token=${{ secrets.FIREBASE_TOKEN }}
+        env:
+          REACT_APP_BACKEND_URL: https://us-central1-iter-elearning-staging.cloudfunctions.net/greeter
