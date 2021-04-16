@@ -1,4 +1,4 @@
-name: Deploy to staging
+name: Frontend deploy to staging
 on:
   push:
     branches:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   release:
-    name: Deploy to staging
+    name: Frontend deploy to staging
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project

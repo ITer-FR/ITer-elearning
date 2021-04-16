@@ -1,8 +1,15 @@
-name: Frontend deploy to prod
-on: workflow_dispatch
+name: Deploy backend to staging on pull request
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend*"
+
 jobs:
-  deploy-to-prod:
-    name: Frontend deploy to prod
+  deploy-staging:
+    name: Backend deploy to staging
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -27,21 +34,27 @@ jobs:
         id: cache-node-modules
         uses: actions/cache@v2
         with:
-          path: frontend/node_modules
-          key: ${{ runner.os }}-frontend-nodemodules-${{ hashFiles('**/yarn.lock') }}
+          path: backend/node_modules
+          key: ${{ runner.os }}-backend-nodemodules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-frontend-nodemodules-
+            ${{ runner.os }}-backend-nodemodules-
 
       - name: Install packages
-        run: cd frontend && yarn install --frozen-lockfile --prefer-offline
+        run: cd backend && yarn install --frozen-lockfile --prefer-offline
 
-      - name: Release & Deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: cd frontend && npx semantic-release -d
+      - name: Install functions packages
+        run: cd backend/functions && npm install
+
+      - name: Unit test
+        run: cd backend && yarn test:unit
+
+      - name: Integration test
+        run: cd backend && yarn test:integration
 
       - name: Deploy
         run: |
-          cd frontend
+          cd backend
           yarn add firebase-tools
-          yarn firebase deploy --project production --only hosting --token=${{ secrets.FIREBASE_TOKEN }}
+          yarn deploy:staging
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
