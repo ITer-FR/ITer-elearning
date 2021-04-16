@@ -82,4 +82,4 @@ jobs:
           entryPoint: frontend
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
-          REACT_APP_BACKEND_URL: http://localhost:5001/iter-elearning-staging/europe-west1/greeter
+          REACT_APP_BACKEND_URL: https://us-central1-iter-elearning-staging.cloudfunctions.net/greeter
