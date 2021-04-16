@@ -39,12 +39,6 @@ jobs:
       - name: Install functions packages
         run: cd backend/functions && npm install
 
-      - name: Unit test
-        run: cd backend && yarn test:unit
-
-      - name: Integration test
-        run: cd backend && yarn test:integration
-
       - name: Release & Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

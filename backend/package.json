@@ -10,8 +10,8 @@
     "build:functions": "cd functions && npm run build",
     "test:integration": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.integration.config.js --verbose' --project staging",
     "test:e2e": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.e2e.config.js --verbose' --project staging",
-    "deploy:staging": "yarn run build:functions && firestore deploy --only firestore,firestore:rules,firestore:indexes --project staging && cd functions && npm run deploy:staging",
-    "deploy:production": "firestore deploy --only firestore,firestore:rules,firestore:indexes --project production && cd functions && npm run deploy:production"
+    "deploy:staging": "firebase deploy --only firestore,firestore:rules,firestore:indexes --project staging && cd functions && npm run deploy:staging",
+    "deploy:production": "firebase deploy --only firestore,firestore:rules,firestore:indexes --project production && cd functions && npm run deploy:production"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",

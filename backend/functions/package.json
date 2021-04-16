@@ -1,7 +1,6 @@
 {
   "name": "functions",
   "scripts": {
-    "lint": "eslint \"src/**/*\"",
     "build": "tsc",
     "serve": "npm run build && firebase emulators:start --project staging --export-on-exit firestore-exports",
     "shell": "npm run build && firebase functions:shell",
