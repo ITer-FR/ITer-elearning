@@ -5,10 +5,17 @@ import './App.css';
 
 function App() {
   const [namesToGreet, setNamesToGreet] = useState([]);
+  const [namesToBye, setNamesToBye] = useState([]);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}`).then((response) => {
       setNamesToGreet(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/bye`).then((response) => {
+      setNamesToBye(response.data);
     });
   }, []);
 
@@ -22,6 +29,13 @@ function App() {
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Hello{' '}
           {namesToGreet.map((n) => (
+            <span key={n.name}>{n.name}</span>
+          ))}
+        </a>
+        <p></p>
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+          Bye{' '}
+          {namesToBye.map((n) => (
             <span key={n.name}>{n.name}</span>
           ))}
         </a>
