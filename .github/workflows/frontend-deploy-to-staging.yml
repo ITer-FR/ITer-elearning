@@ -44,6 +44,8 @@ jobs:
 
       - name: Build
         run: cd frontend && yarn build
+        env:
+          REACT_APP_BACKEND_URL: https://us-central1-iter-elearning-staging.cloudfunctions.net/greeter
 
       - name: Deploy
         run: |
