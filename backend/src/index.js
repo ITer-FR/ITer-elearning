@@ -15,6 +15,14 @@ export const createApp = ({ firestore }) => {
     return res.json(namesToGreet);
   });
 
+  app.get('/bye', async (req, res) => {
+    const snapshot = await firestore.collection('byebyes').get();
+
+    const namesToBye = [];
+    snapshot.forEach((doc) => namesToBye.push(doc.data()));
+    return res.json(namesToBye);
+  });
+
   app.post('/seedNames', async (req, res) => {
     const { names } = req.body;
 
