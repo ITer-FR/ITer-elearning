@@ -1,3 +1,36 @@
 {
-  "extends": ["react-app", "react-app/jest"]
+  "extends": ["airbnb-base", "plugin:prettier/recommended", "plugin:react-app/recommended"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react-app/react/react-in-jsx-scope": "off",
+    "react-app/react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "info"]
+      }
+    ],
+    "no-unneeded-ternary": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/__tests__/*.test.jsx", "**/cypress/**/*.js"] }
+    ],
+    "linebreak-style": 0,
+    "import/prefer-default-export": 0,
+    "func-names": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  },
+  "env": {
+    "jest": true
+  },
+  "globals": {
+    "cy": "readonly",
+    "Cypress": "readonly"
+  }
 }
