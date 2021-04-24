@@ -7,6 +7,10 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
+/.pnp
+.pnp.js
+.yarn/
+
 # Firebase cache
 .cache/firebase/
 

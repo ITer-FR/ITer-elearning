@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cd backend && yarn && yarn global add firebase-tools
-cd ../frontend && yarn
+yarn set version berry
+cd backend && yarn && cd functions && npm i
+cd ../../frontend && yarn
