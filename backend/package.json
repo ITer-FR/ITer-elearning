@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "serve": "cd functions && npm run serve",
+    "serve:e2e": "cd functions && npm run serve:e2e",
     "test:unit": "jest --config=./jest/jest.common.config.js --verbose",
     "build:functions": "cd functions && npm run build",
     "test:integration": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.integration.config.js --verbose' --project staging",

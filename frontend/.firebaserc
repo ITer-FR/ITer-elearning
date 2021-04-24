@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "staging": "iter-elearning-staging",
-    "production": "iter-elearning"
-  }
-}
