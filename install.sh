@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd backend && yarn
+cd backend && yarn && yarn global add firebase-tools
 cd ../frontend && yarn
