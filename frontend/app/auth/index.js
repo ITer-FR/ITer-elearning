@@ -4,6 +4,7 @@ import { extraReducers } from './extra-reducers';
 
 const initialState = {
   user: {
+    id: null,
     email: null,
     isAuthenticated: false,
     token: null,
