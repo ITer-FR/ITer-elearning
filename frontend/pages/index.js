@@ -1,7 +1,6 @@
-import Head from "next/head";
-import Link from "next/link";
-import axios from "axios";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
 export default function Home({ names = [] } = {}) {
   return (
@@ -24,12 +23,3 @@ export default function Home({ names = [] } = {}) {
     </div>
   );
 }
-
-Home.getInitialProps = async () => {
-  const names = await axios
-    .get(process.env.NEXT_PUBLIC_BACKEND_URL)
-    .then((response) => response.data);
-  console.log({ names });
-
-  return { names: names.map((n) => n.name) };
-};

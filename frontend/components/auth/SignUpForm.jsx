@@ -22,7 +22,7 @@ export const SignUpForm = () => {
           password: Yup.string().required('Veuillez renseigner ce champ.'),
           passwordConfirmation: Yup.string().oneOf([Yup.ref('password')], 'Les mots de passe ne correspondent pas.'),
         })}
-        onSubmit={(values) => dispatch(signUp({ email: values.email }))}
+        onSubmit={(values) => dispatch(signUp({ email: values.email, password: values.password }))}
       >
         <Form>
           <label htmlFor="email">Email</label>
