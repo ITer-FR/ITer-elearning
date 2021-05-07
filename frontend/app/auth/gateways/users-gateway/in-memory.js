@@ -1,4 +1,4 @@
-export const createInMemoryUsersGateway = ({ existingUsers = {}, nextUserId = null, nextUserToken = null }) => {
+export const createInMemoryUsersGateway = ({ existingUsers = {}, nextUserId = null, nextUserToken = null } = {}) => {
   const users = { ...existingUsers };
   return {
     async signInWithEmailAndPassword({ email }) {
