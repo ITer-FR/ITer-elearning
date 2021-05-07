@@ -15,7 +15,6 @@ export const createInMemoryUsersGateway = ({ existingUsers = {}, nextUserId = nu
         ...user,
         password,
       };
-      return user;
     },
   };
 };

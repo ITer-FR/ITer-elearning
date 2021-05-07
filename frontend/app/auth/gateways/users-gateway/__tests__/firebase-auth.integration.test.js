@@ -10,7 +10,7 @@ describe('firebaseAuthUsersGateway', () => {
     const firebaseConfig = {
       apiKey: 'AIzaSyD7XoJqsWIlq4FyrGg5LP0CItAlCy7WfBs',
       authDomain: 'iter-elearning-staging.firebaseapp.com',
-      projectId: 'iter-elearning-staging',
+      projectId: '',
       storageBucket: 'iter-elearning-staging.appspot.com',
       messagingSenderId: '401020603763',
       appId: '1:401020603763:web:3308c7e798de5c26230906',
@@ -38,5 +38,18 @@ describe('firebaseAuthUsersGateway', () => {
       email: 'pierrecriulanscy+iterselearning@gmail.com',
       token,
     });
+  });
+
+  test('createUserWithEmailAndPassword', async () => {
+    const firebaseAuthUsersGateway = createFirebaseAuthUsersGateway({ firebaseAuth });
+
+    await firebaseAuthUsersGateway.createUserWithEmailAndPassword({
+      email: 'foobar@example.com',
+      password: '[sm&U-9^;E;:5uZ',
+    });
+
+    const createdUser = await firebaseAuth.signInWithEmailAndPassword('foobar@example.com', '[sm&U-9^;E;:5uZ');
+
+    expect(createdUser).not.toBeNull();
   });
 });

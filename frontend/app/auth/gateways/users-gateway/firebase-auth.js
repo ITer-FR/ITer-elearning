@@ -9,4 +9,7 @@ export const createFirebaseAuthUsersGateway = ({ firebaseAuth }) => ({
       token,
     };
   },
+  async createUserWithEmailAndPassword({ email, password }) {
+    await firebaseAuth.createUserWithEmailAndPassword(email, password);
+  },
 });
