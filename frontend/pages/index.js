@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ names = [] } = {}) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,15 +10,6 @@ export default function Home({ names = [] } = {}) {
       </Head>
 
       <span>Hello</span>
-      <ul>
-        {names.map((name) => (
-          <li key={name}>
-            <Link href={`/hello/${name}`}>
-              <a>{name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

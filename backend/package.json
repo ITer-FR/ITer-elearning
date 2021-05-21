@@ -7,10 +7,10 @@
   "scripts": {
     "serve": "cd functions && npm run serve",
     "serve:e2e": "cd functions && npm run serve:e2e",
-    "test:unit": "jest --config=./jest/jest.common.config.js --verbose",
+    "test:unit": "jest --config=./jest/jest.common.config.js --verbose --passWithNoTests",
     "build:functions": "cd functions && npm run build",
-    "test:integration": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.integration.config.js --verbose' --project staging",
-    "test:e2e": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.e2e.config.js --verbose' --project staging",
+    "test:integration": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.integration.config.js --verbose --passWithNoTests' --project staging",
+    "test:e2e": "yarn run build:functions && firebase emulators:exec 'jest --config=./jest/jest.e2e.config.js --verbose --passWithNoTests' --project staging",
     "deploy:staging": "firebase deploy --only firestore,firestore:rules,firestore:indexes --project staging && cd functions && npm run deploy:staging",
     "deploy:production": "firebase deploy --only firestore,firestore:rules,firestore:indexes --project production && cd functions && npm run deploy:production"
   },

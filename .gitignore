@@ -2,3 +2,4 @@
 /.pnp
 .pnp.js
 .yarnrc.yml
+/node_modules

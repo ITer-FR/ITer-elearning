@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:e2e": "concurrently \"cd ../backend && yarn serve:e2e\" \"yarn dev\"",
-    "test:unit": "jest --config=./jest/jest.common.config.js --verbose",
-    "test:integration": "firebase emulators:exec  'jest --config=./jest/jest.integration.config.js --verbose' --project staging",
+    "start:e2e": "concurrently \"cd ../backend && npm run serve:e2e\" \"npm run dev\"",
+    "test:unit": "jest --config=./jest/jest.common.config.js --verbose --passWithNoTests",
+    "test:integration": "firebase emulators:exec  'jest --config=./jest/jest.integration.config.js --verbose --runInBand --passWithNoTests' --project staging",
     "test:e2e": "cypress run"
   },
   "dependencies": {
@@ -41,5 +41,9 @@
     "eslint-plugin-react-app": "^6.2.2",
     "jest": "^26.6.3",
     "prettier": "^2.2.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -13,7 +13,9 @@ const expectedTestAuthUser = ({ id = null, email, token = null, isAuthenticated 
 describe('sign up', () => {
   test('users is not authenticated by default', () => {
     const store = createStore();
-    expect(selectors.selectAuthUser(store.getState())).toEqual(expectedTestAuthUser({ email: null }));
+    expect(selectors.selectAuthUser(store.getState())).toEqual(
+      expectedTestAuthUser({ email: null, isAuthenticated: false })
+    );
   });
   it('signs up the user with email and strong password', async () => {
     const usersGateway = createInMemoryUsersGateway({ nextUserId: 'userId', nextUserToken: 'some-fake-token' });

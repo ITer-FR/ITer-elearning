@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import { selectors } from '../../../app/auth';
@@ -50,7 +50,7 @@ describe('SignUpForm', () => {
       .passwordConfirmation('some-password')
       .submit();
 
-    await store.waitForValueToChange(selectors.selectAuthUser);
+    await act(() => store.waitForValueToChange(selectors.selectAuthUser));
     expect(selectors.selectAuthUser(store.getState())).toEqual(
       expect.objectContaining({
         isAuthenticated: true,
