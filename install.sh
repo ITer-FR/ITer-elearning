@@ -1,5 +1,4 @@
 #!/bin/bash
 
-yarn set version berry
-cd backend && yarn && cd functions && npm i
-cd ../../frontend && yarn
+cd backend && npm i && cd functions && npm i
+cd ../../frontend && npm i

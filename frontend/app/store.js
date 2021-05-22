@@ -1,3 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { reducer as authReducer } from './auth';
 
-export default configureStore();
+export const createStore = ({ usersGateway } = {}) =>
+  configureStore({
+    reducer: combineReducers({
+      ...authReducer,
+    }),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: {
+            usersGateway,
+          },
+        },
+      }),
+  });
