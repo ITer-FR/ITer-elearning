@@ -1,7 +1,7 @@
 import { createStore } from '../store';
 
-export const createTestStore = ({ usersGateway } = {}) => {
-  const store = createStore({ usersGateway });
+export const createTestStore = ({ usersGateway, categoriesGateway } = {}) => {
+  const store = createStore({ usersGateway, categoriesGateway });
 
   store.waitForValueToChange = async (selector, { timeout = 1000 } = {}) => {
     let unsubscribe;
